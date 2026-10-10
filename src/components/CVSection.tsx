@@ -115,18 +115,24 @@ export function CVSection() {
                 <p className="mb-2 font-mono text-[10px] text-[#9ba8bb]">
                   {experience.dates}
                 </p>
-                <div className="flex items-baseline justify-between gap-4 max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-1">
+                <div className="flex items-start justify-between gap-4">
                   <h4 className="m-0 font-display text-lg leading-[1.3] font-semibold text-paper">
                     {experience.role}
                   </h4>
-                  <span className="inline-flex shrink-0 items-center gap-[9px] text-xs text-[#c1cbd9] max-[760px]:flex-row-reverse">
+                  <span className="inline-flex shrink-0 flex-col items-center gap-1 text-xs text-[#c1cbd9]">
                     <img
                       className="h-7 w-[68px] bg-white p-[3px] object-contain"
                       src={experience.logo}
                       alt=""
                       loading="lazy"
                     />
-                    {experience.company}
+                    <span>
+                      {experience.company.split(" ").map((word) => (
+                        <span className="block" key={word}>
+                          {word}
+                        </span>
+                      ))}
+                    </span>
                   </span>
                 </div>
                 <ul className="mt-3 mb-0 list-disc pl-[17px] text-xs leading-[1.7] text-[#aab5c7] [&>li+li]:mt-[5px]">

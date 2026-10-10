@@ -1,6 +1,9 @@
 export function ContactSection() {
   return (
-    <section className="border-t border-line bg-[#080b11] px-[clamp(24px,7.2vw,104px)] pt-[77px] pb-[85px] text-paper max-[760px]:px-6 max-[760px]:pt-[65px] max-[760px]:pb-[67px]">
+    <section
+      className="border-t border-line bg-[#080b11] px-[clamp(24px,7.2vw,104px)] pt-[77px] pb-[85px] text-paper max-[760px]:px-6 max-[760px]:pt-[65px] max-[760px]:pb-[67px]"
+      id="contact"
+    >
       <p className="mb-[22px] font-mono text-[11px] leading-[1.4] text-[#b2bdcf] uppercase">
         <span className="mr-[9px] inline-block size-2 rounded-full bg-accent align-[1px]" />{" "}
         Et maintenant ?
