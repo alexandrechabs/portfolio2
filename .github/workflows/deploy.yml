@@ -1,61 +1,39 @@
-name: Deploy portfolio
+name: Build & Deploy React App via SSH & Docker
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
-concurrency:
-  group: portfolio-production
-  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      SERVER_HOST: ${{ secrets.SERVER_HOST }}
-      SERVER_USER: ${{ secrets.SERVER_USER }}
-      SERVER_PORT: "22"
-      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: 🔄 Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Build Docker image
-        run: docker build --tag "portfolio:${GITHUB_SHA}" .
-
-      - name: Export Docker image
-        run: docker save "portfolio:${GITHUB_SHA}" | gzip > portfolio-image.tar.gz
-
-      - name: Configure SSH
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      - name: 🐳 Build Docker image
         run: |
-          install -m 700 -d "$HOME/.ssh"
-          printf '%s\n' "$SSH_PRIVATE_KEY" > "$HOME/.ssh/deploy_key"
-          chmod 600 "$HOME/.ssh/deploy_key"
+          docker build -t portfolio2 .
 
-      - name: Prepare deployment directory
-        run: >-
-          ssh -i "$HOME/.ssh/deploy_key"
-          -p "$SERVER_PORT"
-          "$SERVER_USER@$SERVER_HOST"
-          "mkdir -p '$DEPLOY_PATH'"
+      - name: 📦 Save image to tarball
+        run: docker save portfolio2 -o portfolio2.tar
 
-      - name: Upload image and Compose configuration
-        run: >-
-          scp -i "$HOME/.ssh/deploy_key"
-          -P "$SERVER_PORT"
-          compose.yaml portfolio-image.tar.gz
-          "$SERVER_USER@$SERVER_HOST:$DEPLOY_PATH/"
+      - name: 🗝️ Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
 
-      - name: Load image and restart service
+      - name: 📤 Copy Docker image to server
+        run: scp -o StrictHostKeyChecking=no portfolio2.tar ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/tmp/portfolio2.tar
+
+      - name: 🚀 Deploy Docker container on server
         run: |
-          ssh -i "$HOME/.ssh/deploy_key" \
-            -p "$SERVER_PORT" \
-            "$SERVER_USER@$SERVER_HOST" \
-            "cd '$DEPLOY_PATH' && printf 'IMAGE_TAG=%s\\n' '$GITHUB_SHA' > .env && docker load < portfolio-image.tar.gz && docker compose up -d --remove-orphans && rm portfolio-image.tar.gz && curl --fail --retry 10 --retry-delay 2 http://localhost:8081/ >/dev/null"
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
+            docker load -i /tmp/portfolio2.tar &&
+            docker stop portfolio2 || true &&
+            docker rm portfolio2 || true &&
+            docker run -d --name portfolio2 -p 3007:80 portfolio2 &&
+            rm /tmp/portfolio2.tar
+          "
