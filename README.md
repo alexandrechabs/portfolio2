@@ -6,7 +6,7 @@ Le workflow `.github/workflows/deploy.yml` construit l’image Docker et la dép
 
 Dans **Settings > Secrets and variables > Actions**, ajouter ces repository secrets :
 
-- `SERVER_SSH_KEY` : clé privée SSH dédiée au déploiement. Ajouter sa clé publique dans `~/.ssh/authorized_keys` du compte `ubuntu` sur le serveur.
+- `SERVER_SSH_KEY` : clé privée SSH dédiée au déploiement, sans phrase secrète (l’action `webfactory/ssh-agent` ne prend pas en charge les clés chiffrées). Ajouter sa clé publique dans `~/.ssh/authorized_keys` du compte `ubuntu` sur le serveur.
 - `SERVER_KNOWN_HOSTS` : clé d’hôte SSH du serveur, vérifiée avant de l’ajouter. Obtenir l’empreinte depuis la console du fournisseur du serveur, puis enregistrer la ligne `known_hosts` correspondante.
 
 Le serveur doit avoir Docker et le plugin `docker compose` installés, et autoriser les connexions SSH sur le port 22 ainsi que le trafic HTTP sur le port 8081. Le workflow transfère l’image et le fichier Compose dans `/home/ubuntu`, charge l’image et redémarre le service.

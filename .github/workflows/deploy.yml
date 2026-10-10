@@ -31,9 +31,10 @@ jobs:
       - name: 🚀 Deploy Docker container on server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
+            set -e
             docker load -i /tmp/portfolio2.tar &&
-            docker stop portfolio2 || true &&
-            docker rm portfolio2 || true &&
-            docker run -d --name portfolio2 -p 3007:80 portfolio2 &&
+            (docker rm -f portfolio2 >/dev/null 2>&1 || true)
+            docker run -d --restart unless-stopped --name portfolio2 -p 8081:8080 portfolio2
             rm /tmp/portfolio2.tar
+            curl --fail --retry 10 --retry-delay 2 http://localhost:8081/ >/dev/null
           "
