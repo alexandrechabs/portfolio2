@@ -26,7 +26,7 @@ const experiences = [
     company: "Welmo",
     logo: "https://chabs.fr/assets/images/welmo.png",
     details: [
-      "Développement du CRM, d’interfaces réactives et de tableaux de bord de suivi.",
+      "Développement du CRM à destination des mandataires immobiliers allant de la prospection jusqu'à la facturation en passant par la gestion de rendez-vous, d’interfaces réactives et de tableaux de bord de suivi.",
       "Accompagnement de la croissance du réseau, passé de 5 à 200 mandataires.",
     ],
   },
