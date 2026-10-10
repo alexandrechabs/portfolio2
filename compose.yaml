@@ -1,0 +1,7 @@
+services:
+  portfolio:
+    image: "portfolio:${IMAGE_TAG:-latest}"
+    build: .
+    ports:
+      - "8081:8080"
+    restart: unless-stopped

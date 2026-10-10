@@ -65,6 +65,11 @@ export const projects: Project[] = [
         url: "https://chabs.fr",
         active: true,
       },
+      {
+        label: "Code source",
+        url: "https://github.com/alexandrechabs/portfolio2",
+        active: true,
+      },
     ],
   },
   {
