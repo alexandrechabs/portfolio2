@@ -4,7 +4,7 @@ const experiences = [
   {
     dates: "Juil. 2025 — Janv. 2026",
     role: "Responsable technique",
-    company: "Digit RE",
+    company: "DigitㅤRE",
     logo: "https://www.digitregroup.com/wp-content/uploads/2023/01/groupe-digit-re-immobilier.png",
     details: [
       "Pilotage de la transition des outils techniques à la suite du rachat de Welmo par Digit RE.",
@@ -33,7 +33,7 @@ const experiences = [
   {
     dates: "Mars 2019 — Août 2019",
     role: "Stagiaire développeur full-stack",
-    company: "Aubay France",
+    company: "Aubay",
     logo: "https://chabs.fr/assets/images/aubay.png",
     details: [
       "Contribution au développement d’applications web et mobiles avec Angular et Ionic.",
