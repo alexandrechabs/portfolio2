@@ -1,3 +1,5 @@
+import alexandrePhoto from "../assets/alexandre.jpg";
+
 export function HeroSection() {
   return (
     <section
@@ -33,7 +35,7 @@ export function HeroSection() {
           </a>
         </div>
       </div>
-      <div className="relative w-full max-w-[475px] justify-self-end animate-[arrive_850ms_100ms_both] border border-[#2d3b53] bg-[#101722] p-[34px_10px_10px] shadow-[0_24px_70px_#0006] before:absolute before:inset-[42px_-22px_-22px_22px] before:-z-10 before:bg-accent max-[760px]:w-[calc(100%-15px)] max-[760px]:max-w-[520px] max-[760px]:justify-self-start max-[760px]:px-[7px]">
+      <div className="relative w-full max-w-[475px] justify-self-end animate-[arrive_850ms_100ms_both] border border-[#4d5b73] bg-[#101722] pt-[34px] shadow-[0_24px_70px_#0006] max-[760px]:w-[calc(100%-15px)] max-[760px]:max-w-[520px] max-[760px]:justify-self-start">
         <div
           className="absolute inset-x-0 top-0 flex h-[34px] items-center gap-[13px] border-b border-line px-3 font-mono text-[9px] text-[#aab5c7]"
           aria-hidden="true"
@@ -47,9 +49,9 @@ export function HeroSection() {
           <span className="text-paper">TSX</span>
         </div>
         <img
-          className="block aspect-[0.94] w-full object-cover max-[760px]:aspect-[1.15]"
-          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85"
-          alt="Espace de travail avec un ordinateur et du code à l’écran"
+          className="mx-auto block aspect-square object-cover object-center"
+          src={alexandrePhoto}
+          alt="Portrait d’Alexandre Chabane"
         />
         <div className="absolute right-[-22px] bottom-6 flex min-h-[68px] w-[230px] items-center gap-3 border border-[#31415e] bg-[#101722] px-[14px] py-3 font-mono text-[10px] leading-[1.55] text-[#d6deec] max-[430px]:right-[-10px] max-[430px]:bottom-[14px] max-[430px]:w-[215px] max-[430px]:min-h-[62px] max-[430px]:px-[10px] max-[430px]:py-[9px] max-[430px]:text-[9px]">
           <span
