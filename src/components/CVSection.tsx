@@ -1,11 +1,16 @@
 import cvFile from "../assets/ALEXANDRE CHABANE.pdf";
+import aubayLogo from "../assets/companies/aubay.png";
+import digitReLogo from "../assets/companies/digit-re.png";
+import esieaLogo from "../assets/companies/esiea.png";
+import technologyEverywhereLogo from "../assets/companies/te.png";
+import welmoLogo from "../assets/companies/welmo.png";
 
 const experiences = [
   {
     dates: "Juil. 2025 — Janv. 2026",
     role: "Responsable technique",
     company: "DigitㅤRE",
-    logo: "https://www.digitregroup.com/wp-content/uploads/2023/01/groupe-digit-re-immobilier.png",
+    logo: digitReLogo,
     details: [
       "Pilotage de la transition des outils techniques à la suite du rachat de Welmo par Digit RE.",
     ],
@@ -14,7 +19,7 @@ const experiences = [
     dates: "Janv. 2024 — Juin 2025",
     role: "Responsable technique",
     company: "Welmo",
-    logo: "https://chabs.fr/assets/images/welmo.png",
+    logo: welmoLogo,
     details: [
       "Conception et développement d’un CRM performant et évolutif pour un réseau de mandataires immobiliers.",
       "Maintenance et optimisation des bases de données et des serveurs de production.",
@@ -24,7 +29,7 @@ const experiences = [
     dates: "Janv. 2020 — Déc. 2023",
     role: "Développeur full-stack senior",
     company: "Welmo",
-    logo: "https://chabs.fr/assets/images/welmo.png",
+    logo: welmoLogo,
     details: [
       "Développement du CRM à destination des mandataires immobiliers allant de la prospection jusqu'à la facturation en passant par la gestion de rendez-vous, d’interfaces réactives et de tableaux de bord de suivi.",
       "Accompagnement de la croissance du réseau, passé de 5 à 200 mandataires.",
@@ -34,7 +39,7 @@ const experiences = [
     dates: "Mars 2019 — Août 2019",
     role: "Stagiaire développeur full-stack",
     company: "Aubay",
-    logo: "https://chabs.fr/assets/images/aubay.png",
+    logo: aubayLogo,
     details: [
       "Contribution au développement d’applications web et mobiles avec Angular et Ionic.",
     ],
@@ -43,7 +48,7 @@ const experiences = [
     dates: "Avr. 2018 — Juil. 2018",
     role: "Stagiaire développeur mobile",
     company: "Technology Everywhere",
-    logo: "https://chabs.fr/assets/images/te.png",
+    logo: technologyEverywhereLogo,
     details: ["Développement d’une application mobile avec React Native."],
   },
 ];
@@ -53,7 +58,7 @@ const education = [
     dates: "2013 — 2019",
     diploma: "Master d’ingénieur en informatique",
     school: "ESIEA",
-    logo: "https://chabs.fr/assets/images/esiea.png",
+    logo: esieaLogo,
   },
   {
     dates: "2010 — 2013",
