@@ -1,4 +1,5 @@
 import { AboutSection } from "./components/AboutSection";
+import { AISection } from "./components/AISection";
 import { ContactSection } from "./components/ContactSection";
 import { CVSection } from "./components/CVSection";
 import { HeroSection } from "./components/HeroSection";
@@ -14,6 +15,7 @@ function App() {
         <HeroSection />
         <ProjectsSection />
         <AboutSection />
+        <AISection />
         <CVSection />
         <ContactSection />
       </main>
